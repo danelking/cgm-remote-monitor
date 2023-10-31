@@ -53,7 +53,7 @@ services:
       # If you change it, you probably also want to comment out the entire `mongo` service block
       # and `depends_on` block above.
       # MONGO_CONNECTION: mongodb://127.0.0.1:27017/nightscout
-      MONGO_CONNECTION: mongodb://root:y7nsskYb3FpssQFO@192.168.1.131:27017/nightscout
+      MONGO_CONNECTION: mongodb://nightscout:ZT544cWHcR4Zcian@192.168.1.131:27017/nightscout
 
       # API_SECRET - A secret passphrase that must be at least 12 characters long.
       API_SECRET: Qwerty123456
