@@ -23,6 +23,8 @@ services:
     image: nightscout/cgm-remote-monitor:latest
     container_name: nightscout
     restart: always
+    ports:
+      - '1337:1337'
     depends_on:
       - mongo
     labels:
@@ -37,7 +39,7 @@ services:
       ### Variables for the container
       NODE_ENV: production
       TZ: China/Shanghai
-      
+
       # TZ: Etc/UTC
       ### Overridden variables for Docker Compose setup
       # The `nightscout` service can use HTTP, because we use `traefik` to serve the HTTPS
