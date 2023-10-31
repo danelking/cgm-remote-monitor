@@ -8,16 +8,17 @@ x-logging:
   driver: json-file
 
 services:
-  mongo:
-    image: mongo:4.4
-    container_name: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: Qwer1234
-    volumes:
-      - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
-    logging: *default-logging
+  # mongo:
+  #   image: mongo:4.4
+  #   container_name: mongo
+  #   restart: always
+  #   environment:
+  #     #MongoDB的用户名和密码
+  #   ports:
+  #     - '27017:27017'
+  #   volumes:
+  #     - ${NS_MONGO_DATA_DIR:-./mongo-data}:/data/db:cached
+  #   logging: *default-logging
 
   nightscout:
     image: nightscout/cgm-remote-monitor:latest
@@ -25,8 +26,6 @@ services:
     restart: always
     ports:
       - '1337:1337'
-    depends_on:
-      - mongo
     labels:
       - 'traefik.enable=false'
       # Change the below Host from `localhost` to be the web address where Nightscout is running.
@@ -54,7 +53,7 @@ services:
       # If you change it, you probably also want to comment out the entire `mongo` service block
       # and `depends_on` block above.
       # MONGO_CONNECTION: mongodb://mongo:27017/nightscout
-      MONGO_CONNECTION: mongodb://root:Qwer1234@mongo:27017/nightscout
+      MONGO_CONNECTION: mongodb://root:D69EaoSwIkaUFzZM@127.0.0.1:27017/nightscout
 
       # API_SECRET - A secret passphrase that must be at least 12 characters long.
       API_SECRET: Qwerty123456
